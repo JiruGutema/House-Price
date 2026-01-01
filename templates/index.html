@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>House Price Predictor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .card {
+        background: white;
+        padding: 24px;
+        border-radius: 0px;
+        width: 420px;
+        height: 700px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-size: 14px;
+        margin-top: 10px;
+        display: block;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 4px;
+        border-radius: 0px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        background: black;
+        color: white;
+        border: none;
+        border-radius: 0px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: black;
+      }
+
+      .result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: black;
+      }
+      * {
+        border-radius: 0;
+      }
+      .description {
+        width: 400px;
+        margin-right: 40px;
+        font-size: 14px;
+        color: #333;
+        height: 700px;
+        top: 0;
+      }
+
+      @media (max-width: 900px) {
+        body {
+          flex-direction: column;
+          height: auto;
+          padding: 20px;
+        }
+
+        .description {
+          width: 100%;
+          margin: 0 0 20px 0;
+          height: auto;
+        }
+
+        .card {
+          width: 100%;
+          height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="description">
+      <h1>House Price Predictor</h1>
+
+      <p>
+        This application uses a
+        <strong>machine learning regression model</strong>
+        to estimate the market value of a house based on key property features.
+      </p>
+
+      <p>
+        The dataset used in this project is designed for
+        <strong>beginners learning regression</strong>. It contains
+        <strong>1000 rows</strong>, where each row represents a house and
+        multiple attributes that influence its price.
+      </p>
+
+      <p>
+        This makes the project ideal for practicing
+        <strong
+          >basic to intermediate-level regression modeling techniques</strong
+        >
+        using real-world–style data.
+      </p>
+
+      <ul>
+        <li>Square footage</li>
+        <li>Number of bedrooms</li>
+        <li>Number of bathrooms</li>
+        <li>Year built</li>
+        <li>Lot size & garage</li>
+        <li>Neighborhood quality</li>
+      </ul>
+
+      <p>
+        Enter the house details on the right and click
+        <strong>Predict Price</strong> to receive an instant estimated value.
+      </p>
+    </div>
+    <div class="card">
+      <h2>House Price Predictor</h2>
+
+      <form method="POST">
+        <label>Square Footage</label>
+        <input type="number" name="Square_Footage" required />
+
+        <label>Bedrooms</label>
+        <input type="number" name="Num_Bedrooms" required />
+
+        <label>Bathrooms</label>
+        <input type="number" name="Num_Bathrooms" required />
+
+        <label>Year Built</label>
+        <input type="number" name="Year_Built" required />
+
+        <label>Lot Size</label>
+        <input type="number" step="any" name="Lot_Size" required />
+
+        <label>Garage Size</label>
+        <input type="number" name="Garage_Size" required />
+
+        <label>Neighborhood Quality (1–10)</label>
+        <input
+          type="number"
+          min="1"
+          max="10"
+          name="Neighborhood_Quality"
+          required
+        />
+
+        <button type="submit">Predict Price</button>
+      </form>
+
+      {% if prediction %}
+      <div class="result">Predicted Price: {{ prediction }}</div>
+      {% endif %}
+    </div>
+  </body>
+</html>
